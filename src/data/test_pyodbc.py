@@ -5,7 +5,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 import pyodbc
-from src.data.data_fetcher import fetch_fts_data
+from data.fts_data_fetcher import get_fts_data
 from src.data.database import fetch_data
 
 print(pyodbc.version)
@@ -22,7 +22,7 @@ def test_connection():
         print("No data fetched or error occurred.")
 
 def test_fetch_fts_data():
-    start_season = "201617"
+    start_season = "201314"
     end_season = "202324"
     is_feat = "Yes"
     avg_type = "SMA"
@@ -32,8 +32,9 @@ def test_fetch_fts_data():
     team_data_type = "Overall"
     lg_window_size = 30
     lg_avg_type = "SMA"
+    excluded_columns = ["adv_idx_uuid", "season_year", "match_date"]
 
-    df = fetch_fts_data(start_season, end_season, is_feat, avg_type, player_window_size, team_window_size, team_avg_type, team_data_type, lg_window_size, lg_avg_type)
+    df = get_fts_data(start_season, end_season, is_feat, avg_type, player_window_size, team_window_size, team_avg_type, team_data_type, lg_window_size, lg_avg_type, excluded_columns)
     
     if df is not None:
         print("Data fetched successfully:")
