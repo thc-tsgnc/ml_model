@@ -1,3 +1,5 @@
+# src/data_fetcher/fts_data_fetcher.py
+
 import sys
 import os
 import pandas as pd
@@ -5,7 +7,7 @@ import pandas as pd
 # Ensure the correct directory is included in the sys.path for the VSCode environment
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from src.data.database import execute_query, get_columns_for_table, generate_query_with_conditions
+from src.data_fetcher.database import execute_query, get_columns_for_table, generate_query_with_conditions
 
 def rename_columns_with_postfix(df, postfix, excluded_columns):
     """

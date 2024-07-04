@@ -1,3 +1,6 @@
+# src/data_fetcher/test_pyodbc.py
+
+
 import sys
 import os
 
@@ -5,8 +8,8 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 import pyodbc
-from data.fts_data_fetcher import get_fts_data
-from src.data.database import fetch_data
+from data_fetcher.fts_data_fetcher import get_fts_data
+from src.data_fetcher.database import fetch_data
 
 print(pyodbc.version)
 

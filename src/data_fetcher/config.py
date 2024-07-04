@@ -1,4 +1,4 @@
-# src/data/config.py
+# src/data_fetcher/config.py
 
 DATABASE_CONFIG = {
     'driver': 'ODBC Driver 17 for SQL Server',

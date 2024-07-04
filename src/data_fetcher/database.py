@@ -1,3 +1,5 @@
+# src/data_fetcher/database.py
+
 import sys
 import os
 
@@ -7,7 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')
 import pyodbc
 import pandas as pd
 import time
-from src.data.config import DATABASE_CONFIG
+from src.data_fetcher.config import DATABASE_CONFIG
 
 def get_connection():
     """
