@@ -1,0 +1,146 @@
+{
+  "play_type": {
+    "fts": {
+      "tasks": [
+        {
+          "task_name": "find_optimal_window_size",
+          "enabled": true,
+          "data_key": "fts_basic",
+          "task_params": {
+            "data_scope": "player",
+            "exclude_columns": [
+              "adv_idx_uuid",
+              "season_year",
+              "match_date"
+            ],
+            "feat_columns": [
+              "t1_player_tip_avg_overall",
+              "t1_player_tip_avg_home",
+              "t2_player_tip_avg_overall",
+              "t2_player_tip_avg_away"
+            ],
+            "target": "team1_tip",
+            "window_sizes": [-1, 30]
+          }
+        },
+        {
+          "task_name": "find_optimal_window_size",
+          "enabled": true,
+          "data_key": "fts_basic",
+          "task_params": {
+            "data_scope": "team",
+            "exclude_columns": [
+              "adv_idx_uuid",
+              "season_year",
+              "match_date"
+            ],
+            "feat_columns": [
+              "t1_team_fps_avg",
+              "t1_team_fts_avg",
+              "t1_team_tip1_fts_avg",
+              "t1_team_tip0_fts_avg",
+              "t2_team_fps_avg_overall",
+              "t2_team_fts_avg_overall",
+              "t2_team_tip1_fts_avg",
+              "t2_team_tip0_fts_avg"
+            ],
+            "target": "team1_fts",
+            "window_sizes": [-1]
+          }
+        },
+        {
+          "task_name": "find_optimal_window_size",
+          "enabled": true,
+          "data_key": "fts_basic",
+          "task_params": {
+            "data_scope": "league",
+            "exclude_columns": [
+              "adv_idx_uuid",
+              "season_year",
+              "match_date"
+            ],
+            "feat_columns": [
+              "lg_t1_tip1_avg",
+              "lg_t1_tip0_avg",
+              "lg_t2_tip1_avg",
+              "lg_t2_tip0_avg"
+            ],
+            "target": "team1_fts",
+            "window_sizes": [-1]
+          }
+        }
+      ]
+    },
+    "hdp_ft": {
+      "tasks": [
+        {
+          "task_name": "find_optimal_window_size",
+          "enabled": true,
+          "data_key": "hdp_basic",
+          "task_params": {
+            "data_scope": "player",
+            "exclude_columns": [
+              "adv_idx_uuid",
+              "season_year",
+              "match_date"
+            ],
+            "feat_columns": [
+              "t1_player_tip_avg_overall",
+              "t1_player_tip_avg_home",
+              "t2_player_tip_avg_overall",
+              "t2_player_tip_avg_away"
+            ],
+            "target": "team1_tip",
+            "window_sizes": [-1, 30]
+          }
+        },
+        {
+          "task_name": "find_optimal_window_size",
+          "enabled": true,
+          "data_key": "hdp_basic",
+          "task_params": {
+            "data_scope": "team",
+            "exclude_columns": [
+              "adv_idx_uuid",
+              "season_year",
+              "match_date"
+            ],
+            "feat_columns": [
+              "t1_team_fps_avg",
+              "t1_team_fts_avg",
+              "t1_team_tip1_fts_avg",
+              "t1_team_tip0_fts_avg",
+              "t2_team_fps_avg_overall",
+              "t2_team_fts_avg_overall",
+              "t2_team_tip1_fts_avg",
+              "t2_team_tip0_fts_avg"
+            ],
+            "target": "team1_fts",
+            "window_sizes": [-1]
+          }
+        },
+        {
+          "task_name": "find_optimal_window_size",
+          "enabled": true,
+          "data_key": "hdp_basic",
+          "task_params": {
+            "data_scope": "league",
+            "exclude_columns": [
+              "adv_idx_uuid",
+              "season_year",
+              "match_date"
+            ],
+            "feat_columns": [
+              "lg_t1_tip1_avg",
+              "lg_t1_tip0_avg",
+              "lg_t2_tip1_avg",
+              "lg_t2_tip0_avg"
+            ],
+            "target": "team1_fts",
+            "window_sizes": [-1]
+          }
+        }
+      ]
+    }
+  }
+}

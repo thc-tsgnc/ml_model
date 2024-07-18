@@ -1,0 +1,56 @@
+{
+  "play_type": {
+    "fts": {
+      "fts_basic": {
+        "table_name": "fts_features",
+        "conditions": {
+          "season_year_start": "201617",
+          "season_year_end": "202324",
+          "is_feat": "Yes",
+          "player_avg_type": "SMA",
+          "team_avg_type": "SMA",
+          "team_data_type": "Overall",
+          "lg_avg_type": "SMA"
+        }
+      },
+      "fts_advanced": {
+        "table_name": "fts_features",
+        "conditions": {
+          "season_year_start": "2020",
+          "season_year_end": "202324",
+          "is_feat": "Yes",
+          "player_avg_type": "SMA",
+          "team_avg_type": "SMA",
+          "team_data_type": "Overall",
+          "lg_avg_type": "SMA"
+        }
+      }
+    },
+    "hdp_ft": {
+      "hdp_basic": {
+        "table_name": "hdp_features",
+        "conditions": {
+          "season_year_start": "201617",
+          "season_year_end": "202324",
+          "is_feat": "Yes",
+          "player_avg_type": "EMA",
+          "team_avg_type": "EMA",
+          "team_data_type": "Home",
+          "lg_avg_type": "EMA"
+        }
+      },
+      "hdp_advanced": {
+        "table_name": "hdp_features",
+        "conditions": {
+          "season_year_start": "2021",
+          "season_year_end": "202324",
+          "is_feat": "Yes",
+          "player_avg_type": "EMA",
+          "team_avg_type": "EMA",
+          "team_data_type": "Away",
+          "lg_avg_type": "EMA"
+        }
+      }
+    }
+  }
+}

@@ -52,10 +52,6 @@ def execute_query(query, params=None):
             # Convert list of tuples to list of lists
             data = [list(row) for row in data]
             
-            print(f"Raw Data Returned: {data[:5]}")  # Debug print: Show the first 5 rows of data
-            print(f"Number of Columns Returned: {len(columns)}")  # Debug print: Show the number of columns returned
-            print(f"Columns Returned: {columns}")  # Debug print: Show the column names
-            
             return pd.DataFrame(data, columns=columns)
     except pyodbc.Error as e:
         print(f"Error executing query: {e}")
