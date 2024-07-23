@@ -2,6 +2,74 @@
 
 from data_fetcher.fts_data_fetcher import get_fts_data
 from task_workflows.task_registry import register_task
+from data_processing.data_cleaner import clean_data_list
+from typing import List, Dict, Any, Tuple
+import pandas as pd
+from data_processing.data_cleaner import clean_data_list
+from data_processing.eda_process import perform_eda_regression
+from data_processing.eda_process import calculate_feature_variance
+
+
+def analyze_window_sizes(cleaned_data_list: List[Dict[str, Any]], regression_type: str) -> Dict[int, Dict[str, Any]]:
+    results = {}
+    for entry in cleaned_data_list:
+        window_size = entry['window_size']
+        df = entry['data']
+        target_column = entry['params']['target_column']
+        
+        feature_variance = calculate_feature_variance(df, target_column)
+        print(f"analyzing window size: {window_size}, regression type: {regression_type}, feature variance: {feature_variance}")        
+        regression_results = perform_eda_regression(df, target_column, regression_type)
+        
+        results[window_size] = {
+            'feature_variance': feature_variance,
+            'regression_results': regression_results
+        }
+    
+    return results
+
+def select_optimal_window_size(results: Dict[int, Dict[str, float]], regression_type: str) -> int:
+    metric = 'mean_r2' if regression_type == 'linear' else 'mean_roc_auc'
+    return max(results, key=lambda x: results[x]['regression_results'][f'{regression_type}_regression'][metric] - results[x]['feature_variance'])
+
+def optimize_window_size(cleaned_data_list: List[Dict[str, Any]], regression_type: str) -> Tuple[Dict, int, pd.DataFrame]:
+    print(f"Optimizing window size for regression type: {regression_type}")
+    results = analyze_window_sizes(cleaned_data_list, regression_type)
+    optimal_window_size = select_optimal_window_size(results, regression_type)
+    optimal_df = get_optimal_dataframe(cleaned_data_list, optimal_window_size)
+    return results, optimal_window_size, optimal_df
+
+def get_optimal_dataframe(cleaned_data_list: List[Dict[str, Any]], optimal_window_size: int) -> pd.DataFrame:
+    return next(entry['data'] for entry in cleaned_data_list if entry['window_size'] == optimal_window_size)
+
+
+def save_results(results: Dict[int, Dict[str, Any]], optimal_window_size: int, optimal_df: pd.DataFrame, data_params: dict, task_params: dict):
+    """Save the results of the window size optimization process."""
+    # This is a placeholder function. Implement according to your specific needs.
+    print(f"Saving results for optimal window size: {optimal_window_size}")
+    print(f"Results summary: {results[optimal_window_size]}")
+    print(f"Data params: {data_params}")
+    print(f"Task params: {task_params}")
+
+def save_results_to_csv(results: Dict[int, Dict[str, Any]], optimal_window_size: int, data_params: dict, task_params: dict, output_file: str, regression_type: str):
+    """Save the results of the window size optimization process to a CSV file."""
+    print(f"Saving results to CSV file: {output_file}")
+    rows = []
+    for window_size, result in results.items():
+        row = {
+            'window_size': window_size,
+            'feature_variance': result['feature_variance'],
+            'regression_metric': result['regression_results'][f"{regression_type}_regression"]['mean_roc_auc' if regression_type == 'logistic' else 'mean_r2'],
+            'is_optimal': window_size == optimal_window_size
+        }
+        rows.append(row)
+    
+    df = pd.DataFrame(rows)
+    df['data_params'] = str(data_params)
+    df['task_params'] = str(task_params)
+    df['regression_type'] = regression_type
+    df.to_csv(output_file, index=False)
+    print(f"Results saved to {output_file}")
 
 @register_task("find_optimal_window_size")
 def find_optimal_window_size(play_type: str, data_params: dict, task_params: dict):
@@ -11,6 +79,7 @@ def find_optimal_window_size(play_type: str, data_params: dict, task_params: dic
         return find_optimal_window_size_box(data_params, task_params)
     else:
         raise ValueError(f"Unsupported play type: {play_type}")
+
 
 def find_optimal_window_size_fts(data_params, task_params):
     print("Handling FTS play type")
@@ -34,22 +103,6 @@ def find_optimal_window_size_fts(data_params, task_params):
     target_column = task_params.get('target', 'team1_tip')
     window_sizes = task_params.get('window_sizes', [-1])
 
-    """
-    # Extract parameters
-    start_season = data_params.get('start_season', '201617')
-    end_season = data_params.get('end_season', '202324')
-    is_feat = data_params.get('is_feat', 'Yes')
-    player_avg_type = data_params.get('player_avg_type', 'SMA')
-    team_avg_type = data_params.get('team_avg_type', 'SMA')
-    team_data_type = data_params.get('team_data_type', 'Overall')
-    lg_avg_type = data_params.get('lg_avg_type', 'SMA')
-
-    data_scope = task_params.get('data_scope', 'player')
-    excluded_columns = task_params.get('exclude_columns', [])
-    feat_columns = task_params.get('feat_columns', [])
-    target_column = task_params.get('target', 'team1_tip')
-    window_sizes = task_params.get('window_sizes', [-1])
-    """
     data_list = []
 
     for window_size in window_sizes:
@@ -97,6 +150,24 @@ def find_optimal_window_size_fts(data_params, task_params):
         else:
             print(f"Failed to retrieve data for window size {window_size} or the dataframe is empty.")
 
+    regression_type = 'logistic'
+    
+    cleaned_data_list = clean_data_list(data_list)
+    print('clean data finished')
+    for entry in cleaned_data_list:
+        cleaned_df = entry['data']
+        window_size = entry['window_size']
+        params = entry['params']
+        print(params)
+    
+    # this is where the process does after clean data
+    cleaned_data_list = clean_data_list(data_list)
+    results, optimal_window_size, optimal_df = optimize_window_size(cleaned_data_list, regression_type)
+    
+    # save_results(results, optimal_window_size, optimal_df, data_params, task_params)
+    output_file = f"window_size_results_{data_params['table_name']}.csv"
+    save_results_to_csv(results, optimal_window_size, data_params, task_params, output_file, regression_type)
+    
     return data_list
     
 
