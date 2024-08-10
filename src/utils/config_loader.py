@@ -49,3 +49,17 @@ def load_and_validate_configs(task_config_path, data_config_path):
     # validate_config(task_config, data_config)
 
     return task_config, data_config
+
+def load_playtype_config(playtype_config_path):
+    """
+    Load the playtype configuration file.
+    :param playtype_config_path: Path to the playtype configuration file.
+    :return: Parsed playtype configuration data.
+    """
+    if not os.path.exists(playtype_config_path):
+        raise FileNotFoundError(f"Playtype configuration file not found: {playtype_config_path}")
+
+    with open(playtype_config_path, 'r') as file:
+        playtype_config = json.load(file)
+    
+    return playtype_config

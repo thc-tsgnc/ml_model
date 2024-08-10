@@ -1,0 +1,166 @@
+{
+    "fts": {
+      "data_sources": {
+        "fts_basic": {
+          "table_name": "fts_features",
+          "conditions": {
+            "season_year_start": "201617",
+            "season_year_end": "202324",
+            "is_feat": "Yes",
+            "player_avg_type": "SMA",
+            "team_avg_type": "SMA",
+            "team_data_type": "Overall",
+            "lg_avg_type": "SMA"
+          }
+        }
+      },
+      "feature_sets": {
+        "fts_set1": [
+          "t1_player_tip_avg_overall",
+          "t1_player_tip_avg_home",
+          "t2_player_tip_avg_overall",
+          "t2_player_tip_avg_away",
+          "t1_team_fps_avg",
+          "t1_team_fts_avg",
+          "lg_t1_tip1_avg",
+          "lg_t1_tip0_avg"
+        ]
+      },
+      "model_configs": {
+        "classification": {
+          "sklearn_rf": {
+            "class": "RandomForestClassifier",
+            "params": {
+              "n_estimators": 100,
+              "max_depth": 10,
+              "random_state": 42
+            },
+            "preprocessing": [
+              {"method": "StandardScaler", "params": {}},
+              {"method": "SelectKBest", "params": {"k": 10}}
+            ],
+            "evaluation_metrics": ["accuracy", "precision", "recall", "f1", "roc_auc"]
+          },
+          "lazy_predict": {
+            "class": "LazyClassifier",
+            "params": {
+              "random_state": 42
+            }
+          }
+        }
+      },
+      "tasks": {
+        "find_optimal_window_size": {
+          "enabled": true,
+          "configurations": [
+            {
+              "data_key": "fts_basic",
+              "feature_set": "fts_set1",
+              "target_column": "team1_tip",
+              "model_type": "classification",
+              "model_key": "lazy_predict"
+            }
+          ],
+          "query_params": {
+            "window_sizes": [-1, 30]
+          },
+          "process_params": {
+            "max_iterations": 100,
+            "convergence_threshold": 0.001
+          },
+          "output": {
+            "results_dir": "./results/fts/window_size_optimization/",
+            "model_save_dir": "./models/fts/window_size_optimization/",
+            "plots_dir": "./plots/fts/window_size_optimization/"
+          }
+        }
+      },
+      "pipelines": {
+        "default": [
+          {"step": "load_data", "params": {}},
+          {"step": "preprocess", "params": {}},
+          {"step": "split_data", "params": {"test_size": 0.2, "random_state": 42}},
+          {"step": "train_model", "params": {}},
+          {"step": "evaluate_model", "params": {}},
+          {"step": "save_results", "params": {}}
+        ]
+      }
+    },
+    "hdp": {
+      "data_sources": {
+        "hdp_basic": {
+          "table_name": "hdp_features",
+          "conditions": {
+            "season_year_start": "201617",
+            "season_year_end": "202324",
+            "is_feat": "Yes",
+            "player_avg_type": "EMA",
+            "team_avg_type": "EMA",
+            "team_data_type": "Home",
+            "lg_avg_type": "EMA"
+          }
+        }
+      },
+      "feature_sets": {
+        "hdp_set1": [
+          "t1_player_tip_avg_overall",
+          "t1_player_tip_avg_home",
+          "t2_player_tip_avg_overall",
+          "t2_player_tip_avg_away",
+          "t1_team_fps_avg",
+          "t1_team_fts_avg",
+          "lg_t1_tip1_avg",
+          "lg_t1_tip0_avg"
+        ]
+      },
+      "model_configs": {
+        "regression": {
+          "sklearn_lr": {
+            "class": "LinearRegression",
+            "params": {},
+            "preprocessing": [
+              {"method": "StandardScaler", "params": {}},
+              {"method": "PolynomialFeatures", "params": {"degree": 2}}
+            ],
+            "evaluation_metrics": ["mean_squared_error", "r2_score"]
+          }
+        }
+      },
+      "tasks": {
+        "find_optimal_window_size": {
+          "enabled": false,
+          "configurations": [
+            {
+              "data_key": "hdp_basic",
+              "feature_set": "hdp_set1",
+              "target_column": "team1_fts",
+              "model_type": "regression",
+              "model_key": "sklearn_lr"
+            }
+          ],
+          "query_params": {
+            "window_sizes": [-1, 30]
+          },
+          "process_params": {
+            "max_iterations": 100,
+            "convergence_threshold": 0.001
+          },
+          "output": {
+            "results_dir": "./results/hdp/window_size_optimization/",
+            "model_save_dir": "./models/hdp/window_size_optimization/",
+            "plots_dir": "./plots/hdp/window_size_optimization/"
+          }
+        }
+      },
+      "pipelines": {
+        "default": [
+          {"step": "load_data", "params": {}},
+          {"step": "preprocess", "params": {}},
+          {"step": "split_data", "params": {"test_size": 0.2, "random_state": 42}},
+          {"step": "train_model", "params": {}},
+          {"step": "evaluate_model", "params": {}},
+          {"step": "save_results", "params": {}}
+        ]
+      }
+    }
+  }
