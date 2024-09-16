@@ -1,0 +1,14 @@
+{
+    "age": {
+        "error": "TypeError: plot_correlation() missing 1 required positional argument: 'filename'"
+    },
+    "income": {
+        "error": "TypeError: plot_correlation() missing 1 required positional argument: 'filename'"
+    },
+    "education": {
+        "error": "TypeError: plot_anova() missing 1 required positional argument: 'filename'"
+    },
+    "satisfaction": {
+        "error": "TypeError: plot_anova() missing 1 required positional argument: 'filename'"
+    }
+}

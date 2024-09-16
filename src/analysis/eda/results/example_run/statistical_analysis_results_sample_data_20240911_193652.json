@@ -1,0 +1,36 @@
+{
+    "feature1": {
+        "column": "feature1",
+        "target": "target",
+        "column_type": "continuous",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Spearman rank correlation",
+        "correlation": 0.019608799075191256,
+        "p_value": 0.5356735157966784,
+        "interpretation": "No significant differences were found (Spearman rank correlation) with p-value = 0.5357 (>= 0.05).\nPost-hoc analysis was not required or could not be performed.",
+        "visualizations": {
+            "feature1_correlation": "results/plots/feature1_correlation_plot.png"
+        }
+    },
+    "feature2": {
+        "column": "feature2",
+        "target": "target",
+        "column_type": "continuous",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Spearman rank correlation",
+        "correlation": -0.018897922230578495,
+        "p_value": 0.550567042528749,
+        "interpretation": "No significant differences were found (Spearman rank correlation) with p-value = 0.5506 (>= 0.05).\nPost-hoc analysis was not required or could not be performed.",
+        "visualizations": {
+            "feature2_correlation": "results/plots/feature2_correlation_plot.png"
+        }
+    },
+    "feature3": {
+        "error": "ValueError: Must enter at least two input sample vectors."
+    },
+    "feature4": {
+        "error": "ValueError: Must enter at least two input sample vectors."
+    }
+}

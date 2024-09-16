@@ -1,0 +1,126 @@
+{
+    "feature1": {
+        "column": "feature1",
+        "target": "target",
+        "column_type": "continuous",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Spearman rank correlation",
+        "correlation": 0.019608799075191256,
+        "p_value": 0.5356735157966784,
+        "interpretation": "No significant differences were found (Spearman rank correlation) with p-value = 0.5357 (>= 0.05).\nPost-hoc analysis was not required or could not be performed.",
+        "visualizations": {
+            "feature1_correlation": "results/plots/feature1_correlation_plot.png"
+        }
+    },
+    "feature2": {
+        "column": "feature2",
+        "target": "target",
+        "column_type": "continuous",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Spearman rank correlation",
+        "correlation": -0.018897922230578495,
+        "p_value": 0.550567042528749,
+        "interpretation": "No significant differences were found (Spearman rank correlation) with p-value = 0.5506 (>= 0.05).\nPost-hoc analysis was not required or could not be performed.",
+        "visualizations": {
+            "feature2_correlation": "results/plots/feature2_correlation_plot.png"
+        }
+    },
+    "feature3": {
+        "column": "feature3",
+        "target": "target",
+        "column_type": "nominal",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Kruskal-Wallis H",
+        "h_statistic": 4.467120680830383,
+        "p_value": 0.10714627302858323,
+        "post_hoc_test": null,
+        "post_hoc_test_name": null,
+        "post_hoc_summary": "Not enough variability or insufficient groups for post-hoc analysis.",
+        "visualizations": {
+            "feature3_anova": "results/plots/feature3_anova_plot.png"
+        },
+        "interpretation": "No significant differences were found (Kruskal-Wallis H) with p-value = 0.1071 (>= 0.05).\nPost-hoc analysis was not required or could not be performed."
+    },
+    "feature4": {
+        "column": "feature4",
+        "target": "target",
+        "column_type": "nominal",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Kruskal-Wallis H",
+        "h_statistic": 7.505859113224339,
+        "p_value": 0.023448950107854912,
+        "post_hoc_test_name": "Dunn's test",
+        "post_hoc_summary": [
+            {
+                "group1": "High",
+                "group2": "High",
+                "p-adj": 1.0
+            },
+            {
+                "group1": "High",
+                "group2": "Low",
+                "p-adj": 1.0
+            },
+            {
+                "group1": "High",
+                "group2": "Medium",
+                "p-adj": 0.02200535342768682
+            },
+            {
+                "group1": "Low",
+                "group2": "High",
+                "p-adj": 1.0
+            },
+            {
+                "group1": "Low",
+                "group2": "Low",
+                "p-adj": 1.0
+            },
+            {
+                "group1": "Low",
+                "group2": "Medium",
+                "p-adj": 0.17180462717046263
+            },
+            {
+                "group1": "Medium",
+                "group2": "High",
+                "p-adj": 0.02200535342768682
+            },
+            {
+                "group1": "Medium",
+                "group2": "Low",
+                "p-adj": 0.17180462717046263
+            },
+            {
+                "group1": "Medium",
+                "group2": "Medium",
+                "p-adj": 1.0
+            }
+        ],
+        "post_hoc_test": {
+            "High": {
+                "High": 1.0,
+                "Low": 1.0,
+                "Medium": 0.02200535342768682
+            },
+            "Low": {
+                "High": 1.0,
+                "Low": 1.0,
+                "Medium": 0.17180462717046263
+            },
+            "Medium": {
+                "High": 0.02200535342768682,
+                "Low": 0.17180462717046263,
+                "Medium": 1.0
+            }
+        },
+        "visualizations": {
+            "feature4_anova": "results/plots/feature4_anova_plot.png"
+        },
+        "interpretation": "Significant differences were found (Kruskal-Wallis H) with p-value = 0.0234 (< 0.05).\n\nPost-hoc analysis using Dunn's test was performed.\nSignificant differences were found between:\nHigh vs Medium (p-adj = 0.0220)\nMedium vs High (p-adj = 0.0220)"
+    }
+}

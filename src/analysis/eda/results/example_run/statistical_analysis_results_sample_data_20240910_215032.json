@@ -1,0 +1,14 @@
+{
+    "age": {
+        "error": "TypeError: generate_visualizations() missing 1 required positional argument: 'column_mapping'"
+    },
+    "income": {
+        "error": "TypeError: generate_visualizations() missing 1 required positional argument: 'column_mapping'"
+    },
+    "education": {
+        "error": "TypeError: generate_visualizations() missing 1 required positional argument: 'column_mapping'"
+    },
+    "satisfaction": {
+        "error": "TypeError: generate_visualizations() missing 1 required positional argument: 'column_mapping'"
+    }
+}

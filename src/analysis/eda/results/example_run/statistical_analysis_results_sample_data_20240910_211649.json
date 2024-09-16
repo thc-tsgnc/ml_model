@@ -1,0 +1,36 @@
+{
+    "age": {
+        "column": "age",
+        "target": "performance",
+        "column_type": "continuous",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Spearman rank correlation",
+        "correlation": -0.08065877134492508,
+        "p_value": 0.010722261926725618,
+        "interpretation": "Significant differences were found (Spearman rank correlation) with p-value = 0.0107 (< 0.05).\nPost-hoc analysis was not required or could not be performed.",
+        "visualizations": {
+            "age_correlation": "results/plots/age_correlation_plot.png"
+        }
+    },
+    "income": {
+        "column": "income",
+        "target": "performance",
+        "column_type": "continuous",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Pearson correlation",
+        "correlation": 0.01726768113059224,
+        "p_value": 0.5854717510156552,
+        "interpretation": "No significant differences were found (Pearson correlation) with p-value = 0.5855 (>= 0.05).\nPost-hoc analysis was not required or could not be performed.",
+        "visualizations": {
+            "income_correlation": "results/plots/income_correlation_plot.png"
+        }
+    },
+    "education": {
+        "error": "PatsyError: Number of rows mismatch between data argument and C(['education_Bachelor', 'education_High School', 'education_Master', 'education_PhD']) (1000 versus 4)\n    performance ~ C(['education_Bachelor', 'education_High School', 'education_Master', 'education_PhD'])\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    },
+    "satisfaction": {
+        "error": "PatsyError: Number of rows mismatch between data argument and C(['satisfaction_High', 'satisfaction_Low', 'satisfaction_Medium']) (1000 versus 3)\n    performance ~ C(['satisfaction_High', 'satisfaction_Low', 'satisfaction_Medium'])\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    }
+}

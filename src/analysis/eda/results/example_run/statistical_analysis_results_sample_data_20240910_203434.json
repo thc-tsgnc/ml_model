@@ -1,0 +1,58 @@
+{
+    "age": {
+        "column": "age",
+        "target": "performance",
+        "column_type": "continuous",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Spearman rank correlation",
+        "correlation": -0.08065877134492508,
+        "p_value": 0.010722261926725618,
+        "interpretation": "Significant differences were found (Spearman rank correlation) with p-value = 0.0107 (< 0.05).\nPost-hoc analysis was not required or could not be performed.",
+        "visualizations": {
+            "age_correlation": "results/plots/age_correlation_plot.png"
+        }
+    },
+    "income": {
+        "column": "income",
+        "target": "performance",
+        "column_type": "continuous",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Pearson correlation",
+        "correlation": 0.01726768113059224,
+        "p_value": 0.5854717510156552,
+        "interpretation": "No significant differences were found (Pearson correlation) with p-value = 0.5855 (>= 0.05).\nPost-hoc analysis was not required or could not be performed.",
+        "visualizations": {
+            "income_correlation": "results/plots/income_correlation_plot.png"
+        }
+    },
+    "education": {
+        "column": "education",
+        "target": "performance",
+        "column_type": "continuous",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Spearman rank correlation",
+        "correlation": -0.01623471395705746,
+        "p_value": 0.6081063247150833,
+        "interpretation": "No significant differences were found (Spearman rank correlation) with p-value = 0.6081 (>= 0.05).\nPost-hoc analysis was not required or could not be performed.",
+        "visualizations": {
+            "education_correlation": "results/plots/education_correlation_plot.png"
+        }
+    },
+    "satisfaction": {
+        "column": "satisfaction",
+        "target": "performance",
+        "column_type": "continuous",
+        "target_type": "continuous",
+        "p_threshold": 0.05,
+        "test_type": "Spearman rank correlation",
+        "correlation": -0.007493016295405352,
+        "p_value": 0.8129229394115607,
+        "interpretation": "No significant differences were found (Spearman rank correlation) with p-value = 0.8129 (>= 0.05).\nPost-hoc analysis was not required or could not be performed.",
+        "visualizations": {
+            "satisfaction_correlation": "results/plots/satisfaction_correlation_plot.png"
+        }
+    }
+}
