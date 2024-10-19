@@ -1,0 +1,112 @@
+[
+    {
+        "group_name": "group1",
+        "features": [
+            "feature1",
+            "feature2",
+            "feature3"
+        ],
+        "algorithm": "kmeans",
+        "optimal_number_of_clusters": 4,
+        "best_params": {
+            "n_clusters": 4
+        },
+        "metrics": {
+            "silhouette_score": 0.27263044103174416,
+            "davies_bouldin_score": 1.1508336241442216,
+            "calinski_harabasz_score": 74.75282723416264
+        }
+    },
+    {
+        "group_name": "group1",
+        "features": [
+            "feature1",
+            "feature2",
+            "feature3"
+        ],
+        "algorithm": "dbscan",
+        "optimal_number_of_clusters": 14,
+        "best_params": {
+            "eps": 0.5,
+            "min_samples": 3
+        },
+        "metrics": {
+            "silhouette_score": 0.032594040391650064,
+            "davies_bouldin_score": 1.4243604858004018,
+            "calinski_harabasz_score": 21.320943014952505
+        }
+    },
+    {
+        "group_name": "group1",
+        "features": [
+            "feature1",
+            "feature2",
+            "feature3"
+        ],
+        "algorithm": "gmm",
+        "optimal_number_of_clusters": 7,
+        "best_params": {
+            "n_components": 7
+        },
+        "metrics": {
+            "silhouette_score": 0.2436899653292906,
+            "davies_bouldin_score": 1.0856429552115159,
+            "calinski_harabasz_score": 69.16521933442395
+        }
+    },
+    {
+        "group_name": "group2",
+        "features": [
+            "feature3",
+            "feature4",
+            "feature5"
+        ],
+        "algorithm": "kmeans",
+        "optimal_number_of_clusters": 2,
+        "best_params": {
+            "n_clusters": 2
+        },
+        "metrics": {
+            "silhouette_score": 0.24463952371320452,
+            "davies_bouldin_score": 1.6141155698412657,
+            "calinski_harabasz_score": 69.24624064840194
+        }
+    },
+    {
+        "group_name": "group2",
+        "features": [
+            "feature3",
+            "feature4",
+            "feature5"
+        ],
+        "algorithm": "dbscan",
+        "optimal_number_of_clusters": 2,
+        "best_params": {
+            "eps": 0.7,
+            "min_samples": 5
+        },
+        "metrics": {
+            "silhouette_score": 0.13758399470816712,
+            "davies_bouldin_score": 2.14768694308247,
+            "calinski_harabasz_score": 17.424082578140876
+        }
+    },
+    {
+        "group_name": "group2",
+        "features": [
+            "feature3",
+            "feature4",
+            "feature5"
+        ],
+        "algorithm": "gmm",
+        "optimal_number_of_clusters": 5,
+        "best_params": {
+            "n_components": 5
+        },
+        "metrics": {
+            "silhouette_score": 0.2466908562848748,
+            "davies_bouldin_score": 1.1157788314251718,
+            "calinski_harabasz_score": 70.30574380370778
+        }
+    }
+]

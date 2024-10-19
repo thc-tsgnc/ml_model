@@ -1,0 +1,10 @@
+[
+    {
+        "window_size": 5,
+        "feature_variance": 0.08334774335121062,
+        "regression_results": {
+            "logistic_regression": {
+                "mean_roc_auc": 0.6281818181818182,
+                "std_roc_auc": 0.11646979322294064
+            },
+            "feature_importance_logistic": 

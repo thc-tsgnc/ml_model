@@ -1,13 +1,18 @@
+# src/data_processing/data_cleaner.py
+
 import pandas as pd
 import numpy as np
 from typing import Union, Dict, Any, Optional, List
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
+import logging
 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 def clean_data_pipeline(
     df: pd.DataFrame,
-    target_column: str,  # The target column must be specified
+    target_column: Optional[str] = None, 
     remove_duplicates: bool = True,
     missing_value_strategy: Union[str, Dict[str, str]] = 'drop',
     normalize_columns: bool = False,
@@ -31,30 +36,48 @@ def clean_data_pipeline(
     if not isinstance(df, pd.DataFrame):
         raise ValueError("Input must be a pandas DataFrame")
 
-    # Separate target from features
-    if target_column and target_column in df.columns:
-        target = df[[target_column]].copy()  # Copy to ensure the original is not altered
-        df = df.drop(columns=[target_column])
-    else:
-        raise ValueError(f"Target column '{target_column}' not found in DataFrame.")
+    # Separate target from features    
+    target = None
+    if target_column:
+        if target_column in df.columns:
+            target = df[[target_column]].copy()
+            df = df.drop(columns=[target_column])
+            logger.info(f"Target column '{target_column}' separated from features")
+        else:
+            logger.warning(f"Target column '{target_column}' not found in DataFrame.")
+
 
     if remove_duplicates:
+        initial_rows = len(df)
         df = df.drop_duplicates()
+        removed_rows = initial_rows - len(df)
+        logger.info(f"Removed {removed_rows} duplicate rows")
 
     df = handle_missing_values(df, missing_value_strategy)
+    logger.info("Missing values handled")
+
 
     if normalize_columns:
         df.columns = df.columns.str.lower().str.replace(' ', '_')
+        logger.info("Column names normalized")
 
     if type_conversion_map:
         df = convert_data_types(df, type_conversion_map)
+        logger.info("Data types converted as specified")
 
     if scaling_params:
         if not isinstance(scaling_params, dict) or 'columns_to_scale' not in scaling_params:
             raise ValueError("scaling_params must be a dictionary with 'columns_to_scale' key")
         df = scale_features(df, **scaling_params)
+        logger.info("Features scaled according to provided parameters")
 
-    df = encode_categorical(df, encoding_strategy)
+    categorical_columns = df.select_dtypes(include=['object', 'category']).columns
+    if len(categorical_columns) > 0:
+        df = encode_categorical(df, encoding_strategy)
+        logger.info(f"Categorical variables encoded using '{encoding_strategy}' strategy")
+    else:
+        logger.info("No categorical columns found. Skipping encoding step.")
+
 
     # Reattach target column if it was separated and indices match
     if target is not None:
@@ -62,7 +85,9 @@ def clean_data_pipeline(
         if not df.index.equals(target.index):
             raise ValueError("Indices of features and target do not match for concatenation.")
         df = pd.concat([df, target], axis=1)
+        logger.info("Target column reattached to features")
 
+    logger.info("Data cleaning process completed")
     return df
 
 def handle_missing_values(df: pd.DataFrame, strategy: Union[str, Dict[str, str]]) -> pd.DataFrame:
@@ -156,14 +181,15 @@ def encode_categorical(df: pd.DataFrame, strategy: str = 'one_hot') -> pd.DataFr
     :param strategy: Encoding strategy ('one_hot' or 'label').
     :return: DataFrame with encoded categorical variables.
     """
-    if strategy not in ['one_hot', 'label']:
-        raise ValueError("Invalid encoding strategy. Use 'one_hot' or 'label'.")
-
     categorical_columns = df.select_dtypes(include=['object', 'category']).columns
     
     if len(categorical_columns) == 0:
-        print("No categorical columns to encode.")
+        logger.info("No categorical columns to encode.")
         return df
+    
+    if strategy not in ['one_hot', 'label']:
+        raise ValueError("Invalid encoding strategy. Use 'one_hot' or 'label'.")
+
 
     if strategy == 'one_hot':
         # Updated parameter 'sparse_output' instead of 'sparse'
@@ -176,11 +202,12 @@ def encode_categorical(df: pd.DataFrame, strategy: str = 'one_hot') -> pd.DataFr
             index=df.index
         )
         df = pd.concat([df.drop(columns=categorical_columns), encoded_df], axis=1)
+        logger.info(f"Applied one-hot encoding to {len(categorical_columns)} columns")
     elif strategy == 'label':
         for col in categorical_columns:
             df[col] = df[col].astype('category').cat.codes
             print(f"Warning: '{col}' encoded as integers. Ensure this is suitable for downstream processing.")
-    
+            logger.info(f"Applied label encoding to {len(categorical_columns)} columns")
     return df
 
 

@@ -1,0 +1,10 @@
+{
+    "play_type": "fts",
+    "window_size": 10,
+    "feature_variance": 0.0816262391501549,
+    "regression_results": {
+        "logistic_regression": {
+            "mean_roc_auc": 0.49729797979797974,
+            "std_roc_auc": 0.10802005957026839
+        },
+        "feature_importance_logistic": 

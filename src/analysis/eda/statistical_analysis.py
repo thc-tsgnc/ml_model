@@ -1,3 +1,5 @@
+# src/analysis/eda/statistical_analysis.py
+
 import pandas as pd
 import numpy as np
 from scipy import stats
@@ -518,6 +520,59 @@ def run_statistical_analysis(
     print(f"Results saved to: {file_path}")
     
     return results
+
+from analysis.eda.statistical_analysis import identify_column_types, determine_variable_relationship, DataType
+
+def cluster_statistical_analysis(
+    df: pd.DataFrame,
+    cluster_column: str,  # The column containing cluster labels
+    target_column: str,   # The target variable (can be continuous or categorical)
+    target_type: DataType = None,  # Optional: User can provide the target type (continuous/categorical)
+    p_threshold: float = 0.05
+) -> Dict[str, Any]:
+    """
+    Perform statistical analysis to compare the target variable across clusters.
+    
+    Args:
+        df (pd.DataFrame): The DataFrame containing the cluster labels and target variable.
+        cluster_column (str): The column containing cluster labels.
+        target_column (str): The target variable to analyze.
+        target_type (DataType): Optional, The data type of the target variable (continuous, nominal, ordinal).
+        p_threshold (float): The significance threshold for the statistical tests (default: 0.05).
+    
+    Returns:
+        Dict[str, Any]: A dictionary containing the results of the statistical analysis, 
+                        including descriptive stats and statistical test results tailored to clustering.
+    """
+    
+    # Step 1: Identify or validate the target type
+    if target_type is None:
+        # Identify the types of columns in the DataFrame
+        column_types = identify_column_types(df)
+        target_type = column_types.get(target_column)
+        if target_type is None:
+            raise ValueError(f"Unable to identify the type of target column: {target_column}")
+    else:
+        # If target_type is provided, validate that it's an instance of DataType enum
+        if not isinstance(target_type, DataType):
+            raise ValueError(f"Invalid target type: {target_type}. Must be an instance of DataType.")
+        column_types = {target_column: target_type}
+    
+    # Step 2: Add the cluster column type (categorical) explicitly
+    column_types[cluster_column] = DataType.NOMINAL  # Treat cluster labels as categorical (nominal)
+
+    # Step 3: Run the variable relationship analysis for clusters and target
+    results = determine_variable_relationship(
+        df=df,
+        column=cluster_column,         # Cluster column serves as the grouping variable (categorical)
+        target=target_column,          # Target variable (continuous or categorical)
+        column_types=column_types,     # Detected types of both columns (e.g., continuous or categorical)
+        column_mapping={},             # No need for column mapping since clustering labels are already grouped
+        p_threshold=p_threshold
+    )
+    
+    return results  # Return the results directly from determine_variable_relationship
+
 
 
 if __name__ == "__main__":

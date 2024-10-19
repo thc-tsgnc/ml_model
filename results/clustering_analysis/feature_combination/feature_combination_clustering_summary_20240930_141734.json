@@ -1,0 +1,47 @@
+[
+    {
+        "group_name": "group2",
+        "features": [
+            "feature3",
+            "feature4",
+            "feature5"
+        ],
+        "algorithm": "kmeans",
+        "optimal_number_of_clusters": 4,
+        "best_params": {
+            "n_clusters": 4
+        },
+        "metrics": {
+            "silhouette_score": 0.2645498247957578,
+            "davies_bouldin_score": 1.1376308832602313,
+            "calinski_harabasz_score": 75.87247029691343
+        }
+    },
+    {
+        "features": [
+            "feature3",
+            "feature4",
+            "feature5"
+        ],
+        "algorithm": "dbscan",
+        "error": "Only one valid cluster found. Invalid result."
+    },
+    {
+        "group_name": "group2",
+        "features": [
+            "feature3",
+            "feature4",
+            "feature5"
+        ],
+        "algorithm": "gmm",
+        "optimal_number_of_clusters": 4,
+        "best_params": {
+            "n_components": 4
+        },
+        "metrics": {
+            "silhouette_score": 0.22273498848813506,
+            "davies_bouldin_score": 1.2962095490958587,
+            "calinski_harabasz_score": 61.96622006579507
+        }
+    }
+]

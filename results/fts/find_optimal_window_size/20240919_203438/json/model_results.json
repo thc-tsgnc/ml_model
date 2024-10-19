@@ -1,0 +1,720 @@
+{
+    "task_params": {
+        "play_type": "fts",
+        "window_sizes": [
+            5,
+            10,
+            15
+        ],
+        "target_column": "target",
+        "feature_set": [
+            "feature_0",
+            "feature_1",
+            "feature_2",
+            "feature_3",
+            "feature_4",
+            "feature_5",
+            "feature_6",
+            "feature_7",
+            "feature_8",
+            "feature_9"
+        ]
+    },
+    "model_params": {
+        "model_type": "classification"
+    },
+    "lazy_predict_results": {
+        "5": {
+            "avg_score": 0.4888888888888889,
+            "best_model": "SGDClassifier",
+            "best_score": 0.65,
+            "feature_variance": 0.08450533011520328,
+            "regression_results": {
+                "logistic_regression": {
+                    "mean_roc_auc": 0.6272565656565656,
+                    "std_roc_auc": 0.11143659830271878
+                },
+                "feature_importance_logistic": {
+                    "feature": [
+                        "feature_6",
+                        "feature_7",
+                        "feature_4",
+                        "feature_2",
+                        "feature_8",
+                        "feature_0",
+                        "feature_5",
+                        "feature_3",
+                        "feature_1",
+                        "feature_9"
+                    ],
+                    "importance": [
+                        1.3441047326220974,
+                        0.9327843407248521,
+                        0.8879537800960947,
+                        0.7054292295977779,
+                        0.5778255508004243,
+                        0.3153502021583899,
+                        0.23400028847251766,
+                        0.1496745520401437,
+                        0.127169957061691,
+                        0.015512377651266191
+                    ]
+                }
+            },
+            "all_models": {
+                "SGDClassifier": {
+                    "Accuracy": 0.65,
+                    "Balanced Accuracy": 0.65,
+                    "ROC AUC": 0.65,
+                    "F1 Score": 0.6266666666666666,
+                    "Time Taken": 0.013545989990234375
+                },
+                "CalibratedClassifierCV": {
+                    "Accuracy": 0.65,
+                    "Balanced Accuracy": 0.6499999999999999,
+                    "ROC AUC": 0.65,
+                    "F1 Score": 0.6491228070175439,
+                    "Time Taken": 0.04332280158996582
+                },
+                "ExtraTreeClassifier": {
+                    "Accuracy": 0.6,
+                    "Balanced Accuracy": 0.6,
+                    "ROC AUC": 0.6,
+                    "F1 Score": 0.5959595959595959,
+                    "Time Taken": 0.014705896377563477
+                },
+                "AdaBoostClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.55,
+                    "ROC AUC": 0.55,
+                    "F1 Score": 0.5396419437340153,
+                    "Time Taken": 0.1109168529510498
+                },
+                "LinearDiscriminantAnalysis": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.55,
+                    "ROC AUC": 0.5499999999999999,
+                    "F1 Score": 0.5396419437340153,
+                    "Time Taken": 0.019001007080078125
+                },
+                "RidgeClassifierCV": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.55,
+                    "ROC AUC": 0.5499999999999999,
+                    "F1 Score": 0.5396419437340153,
+                    "Time Taken": 0.013732194900512695
+                },
+                "RidgeClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.55,
+                    "ROC AUC": 0.5499999999999999,
+                    "F1 Score": 0.5396419437340153,
+                    "Time Taken": 0.019476890563964844
+                },
+                "PassiveAggressiveClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.55,
+                    "ROC AUC": 0.55,
+                    "F1 Score": 0.5488721804511277,
+                    "Time Taken": 0.014139175415039062
+                },
+                "LinearSVC": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.55,
+                    "ROC AUC": 0.5499999999999999,
+                    "F1 Score": 0.5396419437340153,
+                    "Time Taken": 0.012236833572387695
+                },
+                "LGBMClassifier": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.49999999999999994,
+                    "F1 Score": 0.4791666666666667,
+                    "Time Taken": 0.06699395179748535
+                },
+                "DummyClassifier": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.3333333333333333,
+                    "Time Taken": 0.012905120849609375
+                },
+                "XGBClassifier": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.494949494949495,
+                    "Time Taken": 0.05954408645629883
+                },
+                "GaussianNB": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.494949494949495,
+                    "Time Taken": 0.013651132583618164
+                },
+                "LogisticRegression": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.494949494949495,
+                    "Time Taken": 0.012140750885009766
+                },
+                "NearestCentroid": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.494949494949495,
+                    "Time Taken": 0.015372991561889648
+                },
+                "BernoulliNB": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.494949494949495,
+                    "Time Taken": 0.011837005615234375
+                },
+                "DecisionTreeClassifier": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.494949494949495,
+                    "Time Taken": 0.011881113052368164
+                },
+                "NuSVC": {
+                    "Accuracy": 0.45,
+                    "Balanced Accuracy": 0.45,
+                    "ROC AUC": 0.44999999999999996,
+                    "F1 Score": 0.44862155388471175,
+                    "Time Taken": 0.015687942504882812
+                },
+                "QuadraticDiscriminantAnalysis": {
+                    "Accuracy": 0.45,
+                    "Balanced Accuracy": 0.45,
+                    "ROC AUC": 0.45000000000000007,
+                    "F1 Score": 0.44862155388471175,
+                    "Time Taken": 0.012614011764526367
+                },
+                "SVC": {
+                    "Accuracy": 0.45,
+                    "Balanced Accuracy": 0.44999999999999996,
+                    "ROC AUC": 0.45,
+                    "F1 Score": 0.4373401534526854,
+                    "Time Taken": 0.011770009994506836
+                },
+                "Perceptron": {
+                    "Accuracy": 0.45,
+                    "Balanced Accuracy": 0.44999999999999996,
+                    "ROC AUC": 0.44999999999999996,
+                    "F1 Score": 0.4133333333333334,
+                    "Time Taken": 0.011984109878540039
+                },
+                "ExtraTreesClassifier": {
+                    "Accuracy": 0.4,
+                    "Balanced Accuracy": 0.4,
+                    "ROC AUC": 0.4,
+                    "F1 Score": 0.3939393939393939,
+                    "Time Taken": 0.09790992736816406
+                },
+                "BaggingClassifier": {
+                    "Accuracy": 0.4,
+                    "Balanced Accuracy": 0.4,
+                    "ROC AUC": 0.4,
+                    "F1 Score": 0.3939393939393939,
+                    "Time Taken": 0.03537702560424805
+                },
+                "RandomForestClassifier": {
+                    "Accuracy": 0.35,
+                    "Balanced Accuracy": 0.35,
+                    "ROC AUC": 0.35,
+                    "F1 Score": 0.3483709273182957,
+                    "Time Taken": 0.13157892227172852
+                },
+                "LabelPropagation": {
+                    "Accuracy": 0.35,
+                    "Balanced Accuracy": 0.35,
+                    "ROC AUC": 0.35,
+                    "F1 Score": 0.3483709273182957,
+                    "Time Taken": 0.013253211975097656
+                },
+                "LabelSpreading": {
+                    "Accuracy": 0.35,
+                    "Balanced Accuracy": 0.35,
+                    "ROC AUC": 0.35,
+                    "F1 Score": 0.3483709273182957,
+                    "Time Taken": 0.012349128723144531
+                },
+                "KNeighborsClassifier": {
+                    "Accuracy": 0.35,
+                    "Balanced Accuracy": 0.35,
+                    "ROC AUC": 0.35,
+                    "F1 Score": 0.3350383631713555,
+                    "Time Taken": 0.019215106964111328
+                }
+            }
+        },
+        "10": {
+            "avg_score": 0.6240740740740741,
+            "best_model": "BaggingClassifier",
+            "best_score": 0.75,
+            "feature_variance": 0.08209600406414341,
+            "regression_results": {
+                "logistic_regression": {
+                    "mean_roc_auc": 0.5695959595959595,
+                    "std_roc_auc": 0.11857906397773312
+                },
+                "feature_importance_logistic": {
+                    "feature": [
+                        "feature_7",
+                        "feature_1",
+                        "feature_0",
+                        "feature_4",
+                        "feature_9",
+                        "feature_3",
+                        "feature_5",
+                        "feature_6",
+                        "feature_2",
+                        "feature_8"
+                    ],
+                    "importance": [
+                        1.4375619402539934,
+                        0.6919656173086121,
+                        0.672556432332888,
+                        0.36850498161741446,
+                        0.17704143579143114,
+                        0.17531369473558506,
+                        0.149824102016328,
+                        0.14538373110263952,
+                        0.1120508905411011,
+                        0.04860241772108443
+                    ]
+                }
+            },
+            "all_models": {
+                "BaggingClassifier": {
+                    "Accuracy": 0.75,
+                    "Balanced Accuracy": 0.7916666666666667,
+                    "ROC AUC": 0.7916666666666667,
+                    "F1 Score": 0.7468671679197995,
+                    "Time Taken": 0.04304695129394531
+                },
+                "LGBMClassifier": {
+                    "Accuracy": 0.7,
+                    "Balanced Accuracy": 0.7083333333333333,
+                    "ROC AUC": 0.7083333333333334,
+                    "F1 Score": 0.7030303030303029,
+                    "Time Taken": 0.04404878616333008
+                },
+                "NearestCentroid": {
+                    "Accuracy": 0.7,
+                    "Balanced Accuracy": 0.7083333333333333,
+                    "ROC AUC": 0.7083333333333334,
+                    "F1 Score": 0.7030303030303029,
+                    "Time Taken": 0.01151275634765625
+                },
+                "LinearDiscriminantAnalysis": {
+                    "Accuracy": 0.7,
+                    "Balanced Accuracy": 0.6875,
+                    "ROC AUC": 0.6875,
+                    "F1 Score": 0.7,
+                    "Time Taken": 0.011071920394897461
+                },
+                "RidgeClassifierCV": {
+                    "Accuracy": 0.7,
+                    "Balanced Accuracy": 0.6875,
+                    "ROC AUC": 0.6875,
+                    "F1 Score": 0.7,
+                    "Time Taken": 0.012057065963745117
+                },
+                "RidgeClassifier": {
+                    "Accuracy": 0.7,
+                    "Balanced Accuracy": 0.6875,
+                    "ROC AUC": 0.6875,
+                    "F1 Score": 0.7,
+                    "Time Taken": 0.012056112289428711
+                },
+                "LogisticRegression": {
+                    "Accuracy": 0.7,
+                    "Balanced Accuracy": 0.6875,
+                    "ROC AUC": 0.6875,
+                    "F1 Score": 0.7,
+                    "Time Taken": 0.012915849685668945
+                },
+                "LinearSVC": {
+                    "Accuracy": 0.7,
+                    "Balanced Accuracy": 0.6875,
+                    "ROC AUC": 0.6875,
+                    "F1 Score": 0.7,
+                    "Time Taken": 0.01085209846496582
+                },
+                "DecisionTreeClassifier": {
+                    "Accuracy": 0.7,
+                    "Balanced Accuracy": 0.6875,
+                    "ROC AUC": 0.6875,
+                    "F1 Score": 0.7,
+                    "Time Taken": 0.011445045471191406
+                },
+                "ExtraTreeClassifier": {
+                    "Accuracy": 0.65,
+                    "Balanced Accuracy": 0.6666666666666667,
+                    "ROC AUC": 0.6666666666666666,
+                    "F1 Score": 0.6526315789473685,
+                    "Time Taken": 0.014173269271850586
+                },
+                "XGBClassifier": {
+                    "Accuracy": 0.7,
+                    "Balanced Accuracy": 0.6666666666666667,
+                    "ROC AUC": 0.6666666666666667,
+                    "F1 Score": 0.6901098901098901,
+                    "Time Taken": 0.12634801864624023
+                },
+                "NuSVC": {
+                    "Accuracy": 0.65,
+                    "Balanced Accuracy": 0.6666666666666667,
+                    "ROC AUC": 0.6666666666666666,
+                    "F1 Score": 0.6526315789473685,
+                    "Time Taken": 0.011334896087646484
+                },
+                "RandomForestClassifier": {
+                    "Accuracy": 0.7,
+                    "Balanced Accuracy": 0.6666666666666667,
+                    "ROC AUC": 0.6666666666666667,
+                    "F1 Score": 0.6901098901098901,
+                    "Time Taken": 0.1281130313873291
+                },
+                "Perceptron": {
+                    "Accuracy": 0.65,
+                    "Balanced Accuracy": 0.625,
+                    "ROC AUC": 0.625,
+                    "F1 Score": 0.6453333333333333,
+                    "Time Taken": 0.011830806732177734
+                },
+                "KNeighborsClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5833333333333334,
+                    "ROC AUC": 0.5833333333333334,
+                    "F1 Score": 0.544360902255639,
+                    "Time Taken": 0.013657808303833008
+                },
+                "BernoulliNB": {
+                    "Accuracy": 0.6,
+                    "Balanced Accuracy": 0.5833333333333333,
+                    "ROC AUC": 0.5833333333333333,
+                    "F1 Score": 0.6,
+                    "Time Taken": 0.01153707504272461
+                },
+                "ExtraTreesClassifier": {
+                    "Accuracy": 0.6,
+                    "Balanced Accuracy": 0.5833333333333333,
+                    "ROC AUC": 0.5833333333333333,
+                    "F1 Score": 0.6,
+                    "Time Taken": 0.09713006019592285
+                },
+                "LabelPropagation": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5416666666666667,
+                    "ROC AUC": 0.5416666666666667,
+                    "F1 Score": 0.553452685421995,
+                    "Time Taken": 0.012969017028808594
+                },
+                "LabelSpreading": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5416666666666667,
+                    "ROC AUC": 0.5416666666666667,
+                    "F1 Score": 0.553452685421995,
+                    "Time Taken": 0.011605024337768555
+                },
+                "GaussianNB": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5208333333333333,
+                    "ROC AUC": 0.5208333333333333,
+                    "F1 Score": 0.5439999999999999,
+                    "Time Taken": 0.013546943664550781
+                },
+                "SGDClassifier": {
+                    "Accuracy": 0.6,
+                    "Balanced Accuracy": 0.5208333333333333,
+                    "ROC AUC": 0.5208333333333333,
+                    "F1 Score": 0.5199999999999999,
+                    "Time Taken": 0.013362884521484375
+                },
+                "SVC": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.5230769230769231,
+                    "Time Taken": 0.013949155807495117
+                },
+                "PassiveAggressiveClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.5230769230769231,
+                    "Time Taken": 0.01251077651977539
+                },
+                "DummyClassifier": {
+                    "Accuracy": 0.6,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.45,
+                    "Time Taken": 0.012281179428100586
+                },
+                "AdaBoostClassifier": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.4791666666666667,
+                    "ROC AUC": 0.4791666666666667,
+                    "F1 Score": 0.5,
+                    "Time Taken": 0.12429213523864746
+                },
+                "QuadraticDiscriminantAnalysis": {
+                    "Accuracy": 0.45,
+                    "Balanced Accuracy": 0.45833333333333337,
+                    "ROC AUC": 0.45833333333333337,
+                    "F1 Score": 0.4541353383458646,
+                    "Time Taken": 0.011397123336791992
+                },
+                "CalibratedClassifierCV": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.4166666666666667,
+                    "ROC AUC": 0.4166666666666667,
+                    "F1 Score": 0.4,
+                    "Time Taken": 0.029354095458984375
+                }
+            }
+        },
+        "15": {
+            "avg_score": 0.524074074074074,
+            "best_model": "NearestCentroid",
+            "best_score": 0.65,
+            "feature_variance": 0.0848929851425608,
+            "regression_results": {
+                "logistic_regression": {
+                    "mean_roc_auc": 0.5353535353535355,
+                    "std_roc_auc": 0.09314862127998792
+                },
+                "feature_importance_logistic": {
+                    "feature": [
+                        "feature_7",
+                        "feature_3",
+                        "feature_8",
+                        "feature_0",
+                        "feature_2",
+                        "feature_4",
+                        "feature_1",
+                        "feature_9",
+                        "feature_5",
+                        "feature_6"
+                    ],
+                    "importance": [
+                        1.2062203815441952,
+                        0.6491430833620311,
+                        0.5356272402653975,
+                        0.5269726059799578,
+                        0.42339926297212743,
+                        0.3454798383639462,
+                        0.24670263469560752,
+                        0.22037488714590073,
+                        0.11898618305396211,
+                        0.0667854271036669
+                    ]
+                }
+            },
+            "all_models": {
+                "NearestCentroid": {
+                    "Accuracy": 0.65,
+                    "Balanced Accuracy": 0.6515151515151515,
+                    "ROC AUC": 0.6515151515151516,
+                    "F1 Score": 0.6508771929824562,
+                    "Time Taken": 0.010989189147949219
+                },
+                "GaussianNB": {
+                    "Accuracy": 0.65,
+                    "Balanced Accuracy": 0.6414141414141414,
+                    "ROC AUC": 0.6414141414141414,
+                    "F1 Score": 0.6473145780051152,
+                    "Time Taken": 0.010288000106811523
+                },
+                "ExtraTreeClassifier": {
+                    "Accuracy": 0.6,
+                    "Balanced Accuracy": 0.606060606060606,
+                    "ROC AUC": 0.6060606060606062,
+                    "F1 Score": 0.6,
+                    "Time Taken": 0.011606931686401367
+                },
+                "NuSVC": {
+                    "Accuracy": 0.6,
+                    "Balanced Accuracy": 0.5656565656565656,
+                    "ROC AUC": 0.5656565656565656,
+                    "F1 Score": 0.5428571428571429,
+                    "Time Taken": 0.011594057083129883
+                },
+                "LinearSVC": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5404040404040404,
+                    "ROC AUC": 0.5404040404040403,
+                    "F1 Score": 0.5465473145780051,
+                    "Time Taken": 0.012448787689208984
+                },
+                "RidgeClassifierCV": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5404040404040404,
+                    "ROC AUC": 0.5404040404040403,
+                    "F1 Score": 0.5465473145780051,
+                    "Time Taken": 0.01161503791809082
+                },
+                "RidgeClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5404040404040404,
+                    "ROC AUC": 0.5404040404040403,
+                    "F1 Score": 0.5465473145780051,
+                    "Time Taken": 0.011931896209716797
+                },
+                "LogisticRegression": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5404040404040404,
+                    "ROC AUC": 0.5404040404040403,
+                    "F1 Score": 0.5465473145780051,
+                    "Time Taken": 0.013648271560668945
+                },
+                "LinearDiscriminantAnalysis": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5404040404040404,
+                    "ROC AUC": 0.5404040404040403,
+                    "F1 Score": 0.5465473145780051,
+                    "Time Taken": 0.011192798614501953
+                },
+                "ExtraTreesClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5303030303030303,
+                    "ROC AUC": 0.5303030303030303,
+                    "F1 Score": 0.532,
+                    "Time Taken": 0.09571099281311035
+                },
+                "BernoulliNB": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5303030303030303,
+                    "ROC AUC": 0.5303030303030303,
+                    "F1 Score": 0.532,
+                    "Time Taken": 0.012119054794311523
+                },
+                "DecisionTreeClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5202020202020202,
+                    "ROC AUC": 0.5202020202020202,
+                    "F1 Score": 0.5051282051282051,
+                    "Time Taken": 0.011487960815429688
+                },
+                "XGBClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5202020202020202,
+                    "ROC AUC": 0.5202020202020202,
+                    "F1 Score": 0.5051282051282051,
+                    "Time Taken": 0.04184985160827637
+                },
+                "KNeighborsClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.51010101010101,
+                    "ROC AUC": 0.51010101010101,
+                    "F1 Score": 0.46112852664576803,
+                    "Time Taken": 0.013485908508300781
+                },
+                "DummyClassifier": {
+                    "Accuracy": 0.55,
+                    "Balanced Accuracy": 0.5,
+                    "ROC AUC": 0.5,
+                    "F1 Score": 0.3903225806451613,
+                    "Time Taken": 0.010779857635498047
+                },
+                "BaggingClassifier": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.4949494949494949,
+                    "ROC AUC": 0.4949494949494949,
+                    "F1 Score": 0.5,
+                    "Time Taken": 0.03501081466674805
+                },
+                "Perceptron": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.4949494949494949,
+                    "ROC AUC": 0.4949494949494949,
+                    "F1 Score": 0.5,
+                    "Time Taken": 0.01467585563659668
+                },
+                "QuadraticDiscriminantAnalysis": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.48484848484848486,
+                    "ROC AUC": 0.48484848484848486,
+                    "F1 Score": 0.48958333333333337,
+                    "Time Taken": 0.011136054992675781
+                },
+                "LabelPropagation": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.47474747474747475,
+                    "ROC AUC": 0.4747474747474747,
+                    "F1 Score": 0.46703296703296704,
+                    "Time Taken": 0.013995885848999023
+                },
+                "LabelSpreading": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.47474747474747475,
+                    "ROC AUC": 0.4747474747474747,
+                    "F1 Score": 0.46703296703296704,
+                    "Time Taken": 0.012224912643432617
+                },
+                "SVC": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.47474747474747475,
+                    "ROC AUC": 0.4747474747474747,
+                    "F1 Score": 0.46703296703296704,
+                    "Time Taken": 0.013850927352905273
+                },
+                "CalibratedClassifierCV": {
+                    "Accuracy": 0.5,
+                    "Balanced Accuracy": 0.47474747474747475,
+                    "ROC AUC": 0.4747474747474747,
+                    "F1 Score": 0.46703296703296704,
+                    "Time Taken": 0.03091883659362793
+                },
+                "PassiveAggressiveClassifier": {
+                    "Accuracy": 0.45,
+                    "Balanced Accuracy": 0.43939393939393934,
+                    "ROC AUC": 0.43939393939393945,
+                    "F1 Score": 0.44578005115089514,
+                    "Time Taken": 0.01106882095336914
+                },
+                "RandomForestClassifier": {
+                    "Accuracy": 0.45,
+                    "Balanced Accuracy": 0.43939393939393934,
+                    "ROC AUC": 0.43939393939393945,
+                    "F1 Score": 0.44578005115089514,
+                    "Time Taken": 0.12936091423034668
+                },
+                "LGBMClassifier": {
+                    "Accuracy": 0.45,
+                    "Balanced Accuracy": 0.4292929292929293,
+                    "ROC AUC": 0.4292929292929293,
+                    "F1 Score": 0.42800000000000005,
+                    "Time Taken": 0.029258012771606445
+                },
+                "SGDClassifier": {
+                    "Accuracy": 0.4,
+                    "Balanced Accuracy": 0.3939393939393939,
+                    "ROC AUC": 0.3939393939393939,
+                    "F1 Score": 0.4,
+                    "Time Taken": 0.01081395149230957
+                },
+                "AdaBoostClassifier": {
+                    "Accuracy": 0.35,
+                    "Balanced Accuracy": 0.33838383838383834,
+                    "ROC AUC": 0.33838383838383834,
+                    "F1 Score": 0.34501278772378513,
+                    "Time Taken": 0.11432313919067383
+                }
+            }
+        }
+    },
+    "optimal_identifier": 10,
+    "optimal_avg_score": 0.6240740740740741,
+    "best_model": "BaggingClassifier",
+    "best_score": 0.75,
+    "timestamp": "2024-09-19T20:34:38.982784"
+}

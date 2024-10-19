@@ -298,7 +298,7 @@ def perform_eda_binning(
     Returns:
     Dict[str, Any]: A dictionary containing binning results, optimal bin count, and visualization paths.
     """
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../'))
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../results'))
 
     # Default configuration
     default_config = {
@@ -306,9 +306,9 @@ def perform_eda_binning(
         'max_bins': 20,
         'strategy': 'quantile',
         'min_sample_size_pct': 0.05,
-        'output_path': os.path.join(project_root, f'results/example_run/binning/binning_report_{column}.csv'),
+        'output_path': os.path.join(project_root, f'example_run/binning/binning_report_{column}.csv'),
         'generate_plots': True,
-        'plot_output_dir': os.path.join(project_root, 'results/example_run/binning/plots')
+        'plot_output_dir': os.path.join(project_root, 'example_run/binning/plots')
     }
 
     # Update default config with provided config
